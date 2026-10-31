@@ -1,0 +1,25 @@
+This build does NOT use a database.
+
+All data (products, customers, staff, sales) lives in memory only, for as
+long as the program is running. Close the program and it's gone -- run it
+again and every list starts empty.
+
+The only account that exists before you add anything is the built-in
+Staff login:
+    username: admin
+    password: admin123
+(handled directly in LoginFrame / Session.java -- it is not a stored
+record, so it can't be edited or deleted from the Staff screen).
+
+Everything else you see in the program -- every other staff account,
+every customer who registers, every product you add, every sale or
+order -- is created while the program runs and stored only in memory
+(see ProductDAO.java, CustomerDAO.java, StaffDAO.java, SaleDAO.java).
+
+Sorting (click any column header) and the customer order queue
+(Sales > Order Queue: pending orders confirmed or cancelled by staff)
+work exactly the same as in the MySQL build -- only where the data is
+kept differs.
+
+For data that survives closing the program, use the other zip
+(CastroConstructionSupplies.zip), which saves everything to MySQL.
